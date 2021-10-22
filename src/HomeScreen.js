@@ -1,5 +1,7 @@
 import React from 'react'
 
+import requests from "./api/requests"
+
 import Nav from './Nav'
 import Banner from './Banner'
 import Row from './Row'
@@ -10,7 +12,41 @@ export const HomeScreen = () => {
         <div className="homeScreen">
             <Nav />
             <Banner />
-            <Row />
+            <Row
+                title="Pure Flix Originals"
+                fetchUrl={requests.fetchPureFlixMovies}
+                isLargeRow
+            />
+            <Row
+                title="Most Popular Movies"
+                fetchUrl={requests.fetchMostPopularMovies}
+                isLargeRow
+            />
+            <Row
+                title="LATER"
+                fetchUrl={requests.fetchPureFlixMovies}
+                isLargeRow
+            />
+            <Row
+                title="LATER"
+                fetchUrl={requests.fetchPureFlixMovies}
+                isLargeRow
+            />
+            <Row
+                title="LATER"
+                fetchUrl={requests.fetchPureFlixMovies}
+                isLargeRow
+            />
+            <Row
+                title="LATER"
+                fetchUrl={requests.fetchPureFlixMovies}
+                isLargeRow
+            />
+            <Row
+                title="LATER"
+                fetchUrl={requests.fetchPureFlixMovies}
+                isLargeRow
+            />
         </div>
     )
 }
