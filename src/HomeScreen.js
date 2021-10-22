@@ -8,7 +8,6 @@ import "./HomeScreen.scss"
 export const HomeScreen = () => {
     return (
         <div className="homeScreen">
-            HOMESCREEN
             <Nav />
             <Banner />
             <Row />
