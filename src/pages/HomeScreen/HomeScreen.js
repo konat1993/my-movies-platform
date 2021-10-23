@@ -1,10 +1,10 @@
 import React from 'react'
 
-import requests from "./api/requests"
+import requests from "../../api/requests"
 
-import Nav from './Nav'
-import Banner from './Banner'
-import Row from './Row'
+import Nav from '../../Nav'
+import Banner from '../../Banner'
+import Row from '../../Row'
 
 import "./HomeScreen.scss"
 export const HomeScreen = () => {
@@ -17,15 +17,15 @@ export const HomeScreen = () => {
                 fetchUrl={requests.fetchPureFlixMovies}
                 isLargeRow={true}
             />
+            <Row
+                title="Christian Cinema Production"
+                fetchUrl={requests.fetchChristianCinemaMovies}
+                isLargeRow={true}
+            />
             {/* <Row
                 title="LATER"
                 fetchUrl={requests.fetchPureFlixMovies}
                 isLargeRow
-                />
-                <Row
-                    title="Most Popular Movies"
-                    fetchUrl={requests.fetchMostPopularMovies}
-                    isLargeRow
                 />
             <Row
                 title="LATER"

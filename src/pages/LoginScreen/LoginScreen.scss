@@ -1,0 +1,148 @@
+.loginScreen {
+    position: relative;
+    height: 100%;
+    background: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-christian-movies-netflix-round-up-1614305697.jpg")
+        center no-repeat;
+    background-size: cover;
+    &__background {
+        .loginScreen__logo {
+            position: fixed;
+            left: 0;
+            width: 150px;
+            object-fit: contain;
+            padding-left: 20px;
+            box-sizing: content-box;
+        }
+
+        .loginScreen__button {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 1rem;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #21bac2e7, 60%, #2548d8e7);
+
+            &::after {
+                content: "Sign In";
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: linear-gradient(135deg, #2548d8e7, 60%, #21bac2e7);
+                border-radius: 3px;
+                transition: all 0.25s linear;
+            }
+
+            &:hover::after {
+                opacity: 1;
+                box-shadow: 0px 1px 6px -1px rgb(83, 83, 83);
+                transform: scale(1.02);
+            }
+        }
+        .loginScreen__gradient {
+            width: 100%;
+            z-index: 1;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.4);
+            background-image: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.8) 0,
+                rgba(0, 0, 0, 0) 60%,
+                rgba(0, 0, 0, 0.8) 100%
+            );
+        }
+    }
+
+    &__body {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        width: 80%;
+        max-width: 800px;
+        padding: 20px;
+        text-align: center;
+        z-index: 1;
+        background-color: #0000007b;
+        border-radius: 5px;
+        // box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.645);
+        box-shadow: 0px 0px 8px rgba(2, 196, 255, 0.645), inset 0 0 8px rgba(2, 196, 255, 0.645);
+
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        .loginScreen__input {
+            margin: 20px 0;
+            padding: 10px;
+            form {
+                display: flex;
+                justify-content: center;
+                input {
+                    padding: 0 10px;
+                    outline: none;
+                    border: none;
+                    width: 40%;
+                    max-width: 600px;
+                    height: 50px;
+                    border-top-left-radius: 3px;
+                    border-bottom-left-radius: 3px;
+                }
+                button {
+                    position: relative;
+                    padding: 0 20px;
+                    font-size: 1rem;
+                    height: 50px;
+                    border: none;
+                    color: white;
+                    font-weight: 600;
+                    background-color: white;
+                    cursor: pointer;
+                    border-top-right-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                    background: linear-gradient(135deg, #21bac2, 60%, #2549d8);
+
+                    &::after {
+                        content: "GET STARTED";
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 0;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        background: linear-gradient(135deg, #2549d8, 20%, #21bac2);
+                        border-top-right-radius: 3px;
+                        border-bottom-right-radius: 3px;
+                        transition: all 0.25s linear;
+                    }
+
+                    &:hover::after {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
