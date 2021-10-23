@@ -18,7 +18,7 @@ export const Banner = () => {
     const [movie, setMovie] = useState([])
 
     const fetchData = async () => {
-        const request = await axios.get(requests.fetchSpecificMovie("tt6054650"))
+        const request = await axios.get(requests.fetchSpecificMovie("tt4950110"))
         setMovie(request.data)
 
         return request
