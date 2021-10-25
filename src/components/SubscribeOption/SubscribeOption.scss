@@ -1,0 +1,39 @@
+.profileScreen__option {
+    display: flex;
+    margin-bottom: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    p {
+        display: flex;
+        flex-direction: column;
+    }
+    button {
+        margin-left: auto;
+        padding: 10px 40px;
+        border: none;
+        color: whitesmoke;
+        font-weight: bold;
+        font-size: 1rem;
+        border-radius: 50px;
+
+        &:hover {
+            background-color: rgb(216, 0, 0) !important;
+        }
+    }
+    button[name="current"] {
+        &:hover {
+            background-color: gray !important;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .profileScreen__option {
+        margin-bottom: 30px;
+
+        button {
+            padding: 10px 10px;
+        }
+    }
+}

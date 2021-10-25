@@ -9,10 +9,12 @@ const firebaseConfig = {
     appId: "1:670538797564:web:efddf62b2e8a8d4b0ea279"
 };
 
-const initializeApp = firebase.initializeApp(firebaseConfig)
+const firebaseApp = firebase.initializeApp(firebaseConfig)
 
-const db = initializeApp.firestore()
+const db = firebaseApp.firestore()
 
 const auth = firebase.auth()
+
+// const googleProvider = new firebase.auth.GoogleAuthProvider()
 
 export { db, auth }

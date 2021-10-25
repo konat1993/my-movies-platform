@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import myCustomValueReduces from '../features/myCustomValueSlice';
+import userReduce from '../features/userSlice';
 
 export const store = configureStore({
   reducer: {
-    myCustomValue: myCustomValueReduces,
+    user: userReduce,
   },
 });
