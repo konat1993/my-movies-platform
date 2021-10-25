@@ -1,0 +1,80 @@
+.profileScreen {
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+    padding-bottom: 20px;
+
+    &__body {
+        width: 80%;
+        margin: 0 auto;
+        max-width: 800px;
+
+        h1 {
+            font-size: 50px;
+            font-weight: 400;
+            border-bottom: 1px solid #282c2d;
+            margin-bottom: 20px;
+        }
+        .profileScreen__info {
+            display: flex;
+
+            img {
+                height: 100px;
+            }
+            .profileScreen__details {
+                color: white;
+                margin-left: 25px;
+                flex: 1;
+
+                h2 {
+                    background-color: gray;
+                    padding: 15px 20px;
+                    font-size: 15px;
+                    border-radius: 100px;
+                }
+
+                .profileScreen__plans {
+                    margin-top: 20px;
+                    h3 {
+                        border-bottom: 1px solid #282c2d;
+                        padding-bottom: 10px;
+                    }
+                    > p {
+                        margin: 20px 20px 30px;
+                    }
+
+                    .profileScreen__signOut {
+                        padding: 10px 0;
+                        font-size: 1rem;
+                        margin: 5% 20px;
+                        width: calc(100% - 40px);
+                        color: #fff;
+                        background-color: #ff3838;
+                        font-weight: 600;
+                        border: none;
+                        cursor: pointer;
+                        border-radius: 50px;
+
+                        &:hover {
+                            background-color: rgb(216, 0, 0);
+                        }
+                    }
+
+                    div:last-of-type {
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .profileScreen {
+        &__body {
+            width: 90%;
+        }
+    }
+}
