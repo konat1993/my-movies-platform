@@ -14,7 +14,7 @@ export const Row = (props) => {
     }
 
     useEffect(() => {
-        //fetchData()
+        fetchData()
     }, [])
 
     return (

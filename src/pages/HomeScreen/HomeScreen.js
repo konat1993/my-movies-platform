@@ -20,7 +20,7 @@ export const HomeScreen = () => {
             <Row
                 title="Christian Cinema Production"
                 fetchUrl={requests.fetchChristianCinemaMovies}
-                isLargeRow={true}
+                isLargeRow={false}
             />
             {/* <Row
                 title="LATER"

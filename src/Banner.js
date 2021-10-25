@@ -25,7 +25,7 @@ export const Banner = () => {
     }
 
     useEffect(() => {
-        //fetchData()
+        fetchData()
     }, [])
     console.log(movie.image)
 
