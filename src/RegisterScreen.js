@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { emailType } from './features/userSlice'
 
 import "./RegisterScreen.scss"
 export const RegisterScreen = (props) => {
     const { setSignIn } = props
+
+    const [email, setEmail] = useState("")
+
+    const dispatch = useDispatch()
+
+    const handleEmail = (e) => {
+        setEmail(e.target.value)
+    }
+    const handleButton = () => {
+        dispatch(emailType(email))
+        setSignIn(true)
+    }
+
     return (
         <div className="registerScreen">
             <h1>Have faith
@@ -14,9 +29,9 @@ export const RegisterScreen = (props) => {
             </h2>
             <h3>Ready to watch? Enter your email to create or restart your membership.</h3>
             <div className="registerScreen__input">
-                <form action="">
-                    <input type="email" placeholder="Email Adress" />
-                    <button onClick={() => setSignIn(true)}>
+                <form>
+                    <input type="email" placeholder="Email Adress" onChange={handleEmail} value={email} />
+                    <button type="button" onClick={() => handleButton()}>
                         GET STARTED
                     </button>
                 </form>

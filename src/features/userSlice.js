@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    user: null
+    user: null,
+    emailForRegistry: ""
   },
   reducers: {
     login: (state, action) => {
@@ -11,12 +12,16 @@ export const userSlice = createSlice({
     },
     logout: (state) => {
       state.user = null
+    },
+    emailType: (state, action) => {
+      state.emailForRegistry = action.payload
     }
   },
 });
 
-export const { login, logout } = userSlice.actions;
+export const { login, logout, emailType } = userSlice.actions;
 
 export const selectUser = (state) => state.user.user;
+export const selectEmail = (state) => state.user.emailForRegistry;
 
 export default userSlice.reducer;

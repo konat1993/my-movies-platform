@@ -1,20 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import useInput from './hooks/useInput'
 
 import { auth } from './firebase/firebase'
 
 import "./SignUpScreen.scss"
+import { useDispatch, useSelector } from 'react-redux'
+import { emailType, selectEmail } from './features/userSlice'
 const SignUpScreen = (props) => {
     const { setSignIn } = props
 
     const [email, setEmail] = useInput("")
     const [password, setPassword] = useInput("")
 
+    const dispatch = useDispatch()
+    const emailRedux = useSelector(selectEmail)
+
+    useEffect(() => {
+        return () => {
+            dispatch(emailType(""))
+        }
+    }, [])
+
     const register = (e) => {
         e.preventDefault()
 
-        auth.createUserWithEmailAndPassword(email, password)
+        auth.createUserWithEmailAndPassword(email || emailRedux, password)
             .then((authUser) => {
                 console.log("authUser ", authUser)
             }).catch((error) => {
@@ -22,7 +33,7 @@ const SignUpScreen = (props) => {
             })
     }
     const signIn = () => {
-        auth.signInWithEmailAndPassword(email, password)
+        auth.signInWithEmailAndPassword(email || emailRedux, password)
             .then((authUser) => {
                 console.log(authUser)
             }).catch((error) => {
@@ -38,7 +49,7 @@ const SignUpScreen = (props) => {
         <div className="signUpScreen">
             <form onSubmit={handleSubmit}>
                 <h1>Sign In</h1>
-                <input type="email" onChange={setEmail} value={email} placeholder="Email" />
+                <input type="email" onChange={setEmail} value={email || emailRedux} placeholder="Email" />
                 <input type="password" onChange={setPassword} value={password} placeholder="Password" />
                 <button type="submit">Sign In</button>
                 <h4>

@@ -4,9 +4,21 @@
     margin-left: 20px;
     margin-right: 20px;
 
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    &:hover p {
+        color: rgb(209, 209, 209);
+    }
+    &:hover button {
+        color: rgb(209, 209, 209);
+    }
+
     p {
         display: flex;
         flex-direction: column;
+        margin-right: 40px;
     }
     button {
         margin-left: auto;
