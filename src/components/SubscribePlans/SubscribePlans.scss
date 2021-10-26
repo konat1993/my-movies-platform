@@ -3,6 +3,10 @@
     h3 {
         border-bottom: 1px solid #282c2d;
         padding-bottom: 10px;
+
+        span {
+            text-transform: capitalize;
+        }
     }
     > p {
         margin: 20px 20px 30px;
@@ -23,7 +27,7 @@
 
         &:hover {
             background-color: rgb(216, 0, 0);
-            color: white
+            color: white;
         }
     }
 

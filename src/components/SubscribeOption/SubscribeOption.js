@@ -10,7 +10,6 @@ const styles = (isCurrentPackage) => {
 }
 const SubscribeOption = (props) => {
     const { name, description, isCurrentPackage, loadCheckout } = props
-    console.log(props)
     return (
         <div className="SubscribeOption">
             <p>

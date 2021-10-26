@@ -4,7 +4,8 @@ import { loadStripe } from '@stripe/stripe-js'
 import { db } from '../../firebase/firebase'
 
 import { useSelector } from 'react-redux'
-import { selectUser } from '../../features/userSlice'
+import { selectUser, updateSubscriber } from '../../features/userSlice'
+import { useDispatch } from 'react-redux'
 
 import SubscribeOption from "../SubscribeOption/SubscribeOption"
 
@@ -12,9 +13,11 @@ import "./SubscribePlans.scss"
 export const SubscribePlans = ({ signOut }) => {
 
     const [products, setProducts] = useState([])
+    const [subscription, setSubscription] = useState(null)
 
     const user = useSelector(selectUser)
-    const [subscription, setSubscription] = useState(null)
+
+    const dispatch = useDispatch()
 
 
     useEffect(() => {
@@ -29,9 +32,12 @@ export const SubscribePlans = ({ signOut }) => {
                         current_period_end: subscription.data().current_period_end.seconds,
                         current_period_start: subscription.data().current_period_start.seconds
                     })
+
+                    dispatch(updateSubscriber(subscription.data().role))
+                    console.log("useeffect ON", subscription.data().role)
                 })
             })
-    }, [user.uid])
+    }, [user.uid, dispatch])
 
     useEffect(() => {
         db.collection("products")
@@ -55,6 +61,11 @@ export const SubscribePlans = ({ signOut }) => {
                 setProducts(products)
             })
     }, [])
+
+    const signOutHandler = () => {
+        signOut()
+        dispatch(updateSubscriber(null))
+    }
 
     const loadCheckout = async (priceId) => {
         const docRef = await db.collection("customers").doc(user.uid).collection("checkout_sessions").add({
@@ -80,10 +91,17 @@ export const SubscribePlans = ({ signOut }) => {
             }
         })
     }
+    console.log("subscription ", subscription)
     return (
         <div className="subscribePlans">
-            <h3>Plans (Current plan: Premium)</h3>
-            <p>Renewal date: 04/03/2021</p>
+            <h3>Plans (Current plan: <span>{subscription?.role ? subscription?.role : "None"}</span>)</h3>
+            {
+                subscription &&
+                <p>Renewal date: {
+                    new Date(subscription?.current_period_end * 1000).toLocaleDateString()
+                }
+                </p>
+            }
             {
                 Object.entries(products).map(([productId, productData]) => {
                     const isCurrentPackage = productData.name?.toLowerCase().includes(
@@ -103,7 +121,7 @@ export const SubscribePlans = ({ signOut }) => {
             {/* <SubscribeOption title="Pureflix Standard" type="1080p" current={false}>Subscribe</SubscribeOption>
             <SubscribeOption title="Pureflix Premium" type="4k+HDR" current={true}>Current Package</SubscribeOption> */}
 
-            <button onClick={signOut} className="profileScreen__signOut">Sign Out</button>
+            <button onClick={signOutHandler} className="profileScreen__signOut">Sign Out</button>
 
         </div>
     )

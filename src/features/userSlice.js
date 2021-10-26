@@ -4,7 +4,8 @@ export const userSlice = createSlice({
   name: 'user',
   initialState: {
     user: null,
-    emailForRegistry: ""
+    emailForRegistry: "",
+    isSubscribed: null
   },
   reducers: {
     login: (state, action) => {
@@ -15,13 +16,17 @@ export const userSlice = createSlice({
     },
     emailType: (state, action) => {
       state.emailForRegistry = action.payload
+    },
+    updateSubscriber: (state, action) => {
+      state.isSubscribed = action.payload
     }
   },
 });
 
-export const { login, logout, emailType } = userSlice.actions;
+export const { login, logout, emailType, updateSubscriber } = userSlice.actions;
 
 export const selectUser = (state) => state.user.user;
 export const selectEmail = (state) => state.user.emailForRegistry;
+export const selectIsSubscribed = (state) => state.user.isSubscribed;
 
 export default userSlice.reducer;
