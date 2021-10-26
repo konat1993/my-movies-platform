@@ -1,17 +1,16 @@
-.profileScreen__option {
+.SubscribeOption {
     display: flex;
     margin-bottom: 40px;
     margin-left: 20px;
     margin-right: 20px;
+    opacity: 0.9;
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.2);
+        opacity: 1;
     }
 
     &:hover p {
-        color: rgb(209, 209, 209);
-    }
-    &:hover button {
         color: rgb(209, 209, 209);
     }
 

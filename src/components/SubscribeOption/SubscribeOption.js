@@ -2,21 +2,26 @@ import React from 'react'
 
 import "./SubscribeOption.scss"
 
-const styles = (current) => {
+const styles = (isCurrentPackage) => {
     return {
-        backgroundColor: current ? "gray" : "#ff3838",
-        cursor: current ? "initial" : "pointer"
+        backgroundColor: isCurrentPackage ? "gray" : "#ff3838",
+        cursor: isCurrentPackage ? "initial" : "pointer",
     }
 }
 const SubscribeOption = (props) => {
-    const { title, type, current, children } = props
+    const { name, description, isCurrentPackage, loadCheckout } = props
+    console.log(props)
     return (
-        <div className="profileScreen__option">
+        <div className="SubscribeOption">
             <p>
-                <span>{title}</span><span>{type}</span>
+                <span>{name}</span><span>{description}</span>
             </p>
-            <button name={current ? "current" : ""} style={styles(current)}>
-                {children}
+            <button
+                name={isCurrentPackage ? "current" : ""}
+                onClick={loadCheckout}
+                style={styles(isCurrentPackage)}
+            >
+                {isCurrentPackage ? "Current Package" : "Subscribe"}
             </button>
         </div>
     )
