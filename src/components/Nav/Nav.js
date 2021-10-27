@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { useHistory } from 'react-router'
 
-import pureFlixLogo from "./assets/newPureFlix.png"
+import pureFlixLogo from "../../assets/newPureFlix.png"
 
 import "./Nav.scss"
 export const Nav = () => {

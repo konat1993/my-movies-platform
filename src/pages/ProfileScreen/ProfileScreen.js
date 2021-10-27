@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectUser } from '../../features/userSlice'
 import { auth } from '../../firebase/firebase'
-import Nav from '../../Nav'
+import Nav from '../../components/Nav/Nav'
 import SubscribePlans from '../../components/SubscribePlans/SubscribePlans'
 import { Redirect } from 'react-router'
 

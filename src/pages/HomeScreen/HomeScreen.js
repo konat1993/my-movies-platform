@@ -7,9 +7,9 @@ import { selectIsSubscribed, selectUser } from '../../features/userSlice'
 
 import requests from "../../api/requests"
 
-import Nav from '../../Nav'
-import Banner from '../../Banner'
-import Row from '../../Row'
+import Nav from '../../components/Nav/Nav'
+import Banner from '../../components/Banner/Banner'
+import Row from '../../components/Row/Row'
 
 import "./HomeScreen.scss"
 export const HomeScreen = () => {

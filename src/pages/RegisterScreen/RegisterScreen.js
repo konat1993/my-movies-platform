@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { emailType } from './features/userSlice'
+import { emailType } from '../../features/userSlice'
 
 import "./RegisterScreen.scss"
 export const RegisterScreen = (props) => {

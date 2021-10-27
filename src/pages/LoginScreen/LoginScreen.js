@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 
 import pureFlixLogo from "../../assets/newPureFlix.png"
 
-import SignUpScreen from '../../SignUpScreen'
-import RegisterScreen from '../../RegisterScreen'
+import SignUpScreen from '../SignUpScreen/SignUpScreen'
+import RegisterScreen from '../RegisterScreen/RegisterScreen'
 
 import { selectUser } from '../../features/userSlice'
 import { useSelector } from 'react-redux'

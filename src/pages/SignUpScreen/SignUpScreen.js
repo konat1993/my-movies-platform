@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-import useInput from './hooks/useInput'
+import useInput from '../../hooks/useInput'
 
-import { auth } from './firebase/firebase'
+import { auth } from '../../firebase/firebase'
 
 import "./SignUpScreen.scss"
 import { useDispatch, useSelector } from 'react-redux'
-import { emailType, selectEmail, setError, setLoading } from './features/userSlice'
+import { emailType, selectEmail, setError, setLoading } from '../../features/userSlice'
 const SignUpScreen = () => {
     const [email, setEmail] = useInput("")
     const [password, setPassword] = useInput("")

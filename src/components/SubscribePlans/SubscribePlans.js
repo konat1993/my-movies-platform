@@ -34,8 +34,8 @@ export const SubscribePlans = ({ signOut }) => {
                     })
 
                     dispatch(updateSubscriber(subscription.data().role))
-                    dispatch(setLoading(false))
                 })
+                dispatch(setLoading(false))
             })
     }, [user.uid, dispatch])
 

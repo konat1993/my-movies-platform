@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-import axios from "./api/axios"
-import requests from './api/requests'
+import axios from "../../api/axios"
+import requests from '../../api/requests'
 
 import "./Banner.scss"
 
@@ -42,7 +42,7 @@ export const Banner = () => {
                     <button className="banner__button">My List</button>
                 </div>
                 <h1 className="banner__description">
-                {truncate(`${movie?.plot}`, 400)}
+                    {truncate(`${movie?.plot}`, 400)}
                 </h1>
             </div>
 

@@ -1,4 +1,4 @@
-import axios from './api/axios'
+import axios from '../../api/axios'
 import React, { useEffect, useState } from 'react'
 
 import "./Row.scss"
