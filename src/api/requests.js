@@ -7,7 +7,7 @@ const requests = {
     fetchChristianCinemaMovies: `/Company/${IM_DB_API_KEY}/co0059221`,
     fetchTopChristianMovies: `/IMDbList/${IM_DB_API_KEY}/ls555894106`,
     fetchSpecificMovie: (id = "tt6054650") => {
-        console.log("id ", id)
+        // console.log("id ", id)
         return `/Title/${IM_DB_API_KEY2}/${id}/Posters,Images,Trailer`
         // return
     },

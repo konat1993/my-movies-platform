@@ -26,7 +26,7 @@ const SignUpScreen = () => {
 
         auth.createUserWithEmailAndPassword(email || emailRedux, password)
             .then((authUser) => {
-                console.log("authUser ", authUser)
+                // console.log("authUser ", authUser)
             }).catch((error) => {
                 // alert(error.message)
                 dispatch(setError({
@@ -40,7 +40,7 @@ const SignUpScreen = () => {
         dispatch(setLoading(true))
         auth.signInWithEmailAndPassword(email || emailRedux, password)
             .then((authUser) => {
-                console.log(authUser)
+                // console.log(authUser)
             }).catch((error) => {
                 // alert(error.message)
                 dispatch(setLoading(false))

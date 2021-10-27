@@ -10,11 +10,11 @@ export const Row = (props) => {
     const fetchData = async () => {
         const request = await axios.get(fetchUrl)
         setMovies(request.data)
-        console.log(request)
+        // console.log(request)
     }
 
     useEffect(() => {
-        // fetchData()
+        //fetchData()
     }, [])
 
     return (
