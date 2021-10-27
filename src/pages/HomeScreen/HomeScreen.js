@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-import { Redirect, useHistory } from 'react-router'
+import { Redirect } from 'react-router'
 
 import { useSelector } from 'react-redux'
-import { selectIsSubscribed, selectUser, setLoading } from '../../features/userSlice'
+import { selectIsSubscribed, selectUser } from '../../features/userSlice'
 
 import requests from "../../api/requests"
 
@@ -16,32 +16,7 @@ export const HomeScreen = () => {
 
     const isSubscribed = useSelector(selectIsSubscribed)
     const user = useSelector(selectUser)
-    const isLoading = useSelector(setLoading)
 
-    const history = useHistory()
-
-    console.log("isSubscribed ", isSubscribed)
-    console.log("user ", user)
-
-    // useEffect(() => {
-    //     if (!isLoading && user && isSubscribed) {
-    //       history.push("/")
-    //     } else if (!isLoading && user && !isSubscribed) {
-    //       history.push("/profile")
-    //     } else if (!isLoading && !user) {
-    //       history.push("/login")
-    //     }
-    //   }, [isLoading, isSubscribed, history, user])
-
-    // useEffect(() => {
-    //     if (!isLoading && !user) {
-    //         console.log("!isLoading && !user")
-    //         history.push("/login")
-    //     } else if (!isLoading && user && !isSubscribed) {
-    //         console.log("!isLoading && user && !isSubscribed")
-    //         history.push("/profile")
-    //     }
-    // }, [user, isLoading, history, isSubscribed])
     return (
         <div className="homeScreen">
             {

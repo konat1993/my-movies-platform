@@ -6,10 +6,8 @@ import { auth } from './firebase/firebase'
 
 import "./SignUpScreen.scss"
 import { useDispatch, useSelector } from 'react-redux'
-import { emailType, selectEmail, setLoading } from './features/userSlice'
-const SignUpScreen = (props) => {
-    const { setSignIn } = props
-
+import { emailType, selectEmail, setError, setLoading } from './features/userSlice'
+const SignUpScreen = () => {
     const [email, setEmail] = useInput("")
     const [password, setPassword] = useInput("")
 
@@ -30,7 +28,12 @@ const SignUpScreen = (props) => {
             .then((authUser) => {
                 console.log("authUser ", authUser)
             }).catch((error) => {
-                alert(error.message)
+                // alert(error.message)
+                dispatch(setError({
+                    status: true,
+                    message: error.message
+                }))
+                dispatch(setLoading(false))
             })
     }
     const signIn = () => {
@@ -39,7 +42,12 @@ const SignUpScreen = (props) => {
             .then((authUser) => {
                 console.log(authUser)
             }).catch((error) => {
-                alert(error.message)
+                // alert(error.message)
+                dispatch(setLoading(false))
+                dispatch(setError({
+                    status: true,
+                    message: error.message
+                }))
             })
     }
 

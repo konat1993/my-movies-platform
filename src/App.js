@@ -3,20 +3,21 @@ import React, { useEffect } from 'react';
 import { auth } from './firebase/firebase';
 
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   useHistory
 } from "react-router-dom";
 
 import { useDispatch } from 'react-redux';
-import { login, logout, selectIsLoading, selectIsSubscribed, setLoading } from './features/userSlice';
+import { login, logout, selectIsError, selectIsLoading, selectIsSubscribed, setLoading } from './features/userSlice';
 import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
 
 import HomeScreen from './pages/HomeScreen/HomeScreen';
 import LoginScreen from "./pages/LoginScreen/LoginScreen"
 import ProfileScreen from "./pages/ProfileScreen/ProfileScreen"
+import Loader from './pages/LoaderScreen/LoaderScreen';
+import ErrorScreen from './pages/ErrorScreen/ErrorScreen';
 
 import './App.css';
 function App() {
@@ -24,6 +25,7 @@ function App() {
   const user = useSelector(selectUser)
   const isLoading = useSelector(selectIsLoading)
   const isSubscribed = useSelector(selectIsSubscribed)
+  const isError = useSelector(selectIsError)
 
   const history = useHistory()
 
@@ -65,20 +67,13 @@ function App() {
       history.push("/login")
     }
   }, [isLoading, isSubscribed, history, user])
-
-  // useEffect(() => {
-  //   user && isSubscribed && dispatch(setLoading(false))
-  // }, [user, dispatch, isSubscribed])
+  console.log("isError ", isError)
   return (
     <div className="app">
       {isLoading && (
-        <div className="loader">
-          <h2>LOADING...</h2>
-        </div>
+        <Loader />
       )}
-      {/* {!user ? (
-        <LoginScreen />
-      ) : ( */}
+      {isError.status && <ErrorScreen message={isError.message} />}
       <Switch>
         <Route exact path="/login">
           <LoginScreen />
@@ -90,7 +85,6 @@ function App() {
           <ProfileScreen />
         </Route>
       </Switch>
-      {/* )} */}
     </div>
   );
 }

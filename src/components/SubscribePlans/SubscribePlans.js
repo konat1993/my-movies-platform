@@ -35,7 +35,9 @@ export const SubscribePlans = ({ signOut }) => {
 
                     dispatch(updateSubscriber(subscription.data().role))
                     console.log("useeffect ON", subscription.data().role)
-                    dispatch(setLoading(false))
+                    setTimeout(() => {
+                        dispatch(setLoading(false))
+                    }, 2400);
                 })
             })
     }, [user.uid, dispatch])
@@ -60,7 +62,9 @@ export const SubscribePlans = ({ signOut }) => {
                     })
                 })
                 setProducts(products)
-                dispatch(setLoading(false))
+                setTimeout(() => {
+                    dispatch(setLoading(false))
+                }, 2400);
             })
     }, [])
 
@@ -69,7 +73,7 @@ export const SubscribePlans = ({ signOut }) => {
         setTimeout(() => {
             signOut()
             dispatch(updateSubscriber(null))
-        }, 1200);
+        }, 1000);
     }
 
     const loadCheckout = async (priceId) => {
@@ -96,7 +100,7 @@ export const SubscribePlans = ({ signOut }) => {
             }
         })
     }
-    console.log("subscription ", subscription)
+
     return (
         <div className="subscribePlans">
             <h3>Plans (Current plan: <span>{subscription?.role ? subscription?.role : "None"}</span>)</h3>
@@ -123,8 +127,6 @@ export const SubscribePlans = ({ signOut }) => {
                     )
                 })
             }
-            {/* <SubscribeOption title="Pureflix Standard" type="1080p" current={false}>Subscribe</SubscribeOption>
-            <SubscribeOption title="Pureflix Premium" type="4k+HDR" current={true}>Current Package</SubscribeOption> */}
 
             <button onClick={signOutHandler} className="profileScreen__signOut">Sign Out</button>
 

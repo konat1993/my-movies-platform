@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { setLoading } from '../../features/userSlice'
 
 import "./SubscribeOption.scss"
 
@@ -10,6 +12,13 @@ const styles = (isCurrentPackage) => {
 }
 const SubscribeOption = (props) => {
     const { name, description, isCurrentPackage, loadCheckout } = props
+
+    const dispatch = useDispatch()
+
+    const clickHandler = () => {
+        !isCurrentPackage && dispatch(setLoading(true))
+        loadCheckout()
+    }
     return (
         <div className="SubscribeOption">
             <p>
@@ -17,7 +26,7 @@ const SubscribeOption = (props) => {
             </p>
             <button
                 name={isCurrentPackage ? "current" : ""}
-                onClick={loadCheckout}
+                onClick={clickHandler}
                 style={styles(isCurrentPackage)}
             >
                 {isCurrentPackage ? "Current Package" : "Subscribe"}

@@ -27,7 +27,7 @@ export const LoginScreen = () => {
                     <div className="loginScreen__body">
                         {
                             signIn ? (
-                                <SignUpScreen setSignIn={setSignIn} />
+                                <SignUpScreen />
                             ) : (
                                 <RegisterScreen setSignIn={setSignIn} />
                             )
