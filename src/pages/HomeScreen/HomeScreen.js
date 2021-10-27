@@ -35,6 +35,11 @@ export const HomeScreen = () => {
                             fetchUrl={requests.fetchChristianCinemaMovies}
                             isLargeRow={false}
                         />
+                        <Row
+                            title="Top Christian Movies"
+                            fetchUrl={requests.fetchTopChristianMovies}
+                            isLargeRow={false}
+                        />
                     </>
                 )
             }

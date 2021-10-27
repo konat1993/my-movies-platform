@@ -5,7 +5,7 @@ const IM_DB_API_KEY2 = "k_h106awpe"
 const requests = {
     fetchPureFlixMovies: `/Company/${IM_DB_API_KEY}/co0193544`,
     fetchChristianCinemaMovies: `/Company/${IM_DB_API_KEY}/co0059221`,
-    fetchMostPopularMovies: `/MostPopularMovies/${IM_DB_API_KEY}`,
+    fetchTopChristianMovies: `/IMDbList/${IM_DB_API_KEY}/ls555894106`,
     fetchSpecificMovie: (id = "tt6054650") => {
         console.log("id ", id)
         return `/Title/${IM_DB_API_KEY2}/${id}/Posters,Images,Trailer`
