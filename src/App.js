@@ -6,11 +6,11 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  useHistory
 } from "react-router-dom";
 
 import { useDispatch } from 'react-redux';
-import { login, logout } from './features/userSlice';
+import { login, logout, selectIsLoading, selectIsSubscribed, setLoading } from './features/userSlice';
 import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
 
@@ -22,6 +22,10 @@ import './App.css';
 function App() {
 
   const user = useSelector(selectUser)
+  const isLoading = useSelector(selectIsLoading)
+  const isSubscribed = useSelector(selectIsSubscribed)
+
+  const history = useHistory()
 
   const dispatch = useDispatch()
 
@@ -36,31 +40,57 @@ function App() {
           uid: userAuth.uid,
           email: userAuth.email
         }))
+
       } else {
         console.log("else")
         //user is not logged out
         dispatch(logout())
+        setTimeout(() => {
+          dispatch(setLoading(false))
+        }, 2000);
+
       }
     })
     return unsubscribe
   }, [dispatch])
 
+  console.log("isLoading", isLoading)
+  console.log("isSubscribed", isSubscribed)
+  useEffect(() => {
+    if (!isLoading && user && isSubscribed) {
+      history.push("/")
+    } else if (!isLoading && user && !isSubscribed) {
+      history.push("/profile")
+    } else if (!isLoading && !user) {
+      history.push("/login")
+    }
+  }, [isLoading, isSubscribed, history, user])
+
+  // useEffect(() => {
+  //   user && isSubscribed && dispatch(setLoading(false))
+  // }, [user, dispatch, isSubscribed])
   return (
     <div className="app">
-      <Router>
-        {!user ? (
+      {isLoading && (
+        <div className="loader">
+          <h2>LOADING...</h2>
+        </div>
+      )}
+      {/* {!user ? (
+        <LoginScreen />
+      ) : ( */}
+      <Switch>
+        <Route exact path="/login">
           <LoginScreen />
-        ) : (
-          <Switch>
-            <Route exact path="/">
-              <HomeScreen />
-            </Route>
-            <Route exact path="/profile">
-              <ProfileScreen />
-            </Route>
-          </Switch>
-        )}
-      </Router >
+        </Route>
+        <Route exact path="/">
+          <HomeScreen />
+        </Route>
+        <Route exact path="/profile">
+          <ProfileScreen />
+        </Route>
+      </Switch>
+      {/* )} */}
     </div>
   );
 }

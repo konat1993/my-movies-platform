@@ -6,7 +6,7 @@ import { auth } from './firebase/firebase'
 
 import "./SignUpScreen.scss"
 import { useDispatch, useSelector } from 'react-redux'
-import { emailType, selectEmail } from './features/userSlice'
+import { emailType, selectEmail, setLoading } from './features/userSlice'
 const SignUpScreen = (props) => {
     const { setSignIn } = props
 
@@ -24,6 +24,7 @@ const SignUpScreen = (props) => {
 
     const register = (e) => {
         e.preventDefault()
+        dispatch(setLoading(true))
 
         auth.createUserWithEmailAndPassword(email || emailRedux, password)
             .then((authUser) => {
@@ -33,6 +34,7 @@ const SignUpScreen = (props) => {
             })
     }
     const signIn = () => {
+        dispatch(setLoading(true))
         auth.signInWithEmailAndPassword(email || emailRedux, password)
             .then((authUser) => {
                 console.log(authUser)
