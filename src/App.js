@@ -36,7 +36,7 @@ function App() {
     //it is a listener which listens any sort of authentication (persisted)
     const unsubscribe = auth.onAuthStateChanged(userAuth => {
       if (userAuth) {
-        // console.log(userAuth)
+        console.log(userAuth)
         //user is logged in
         dispatch(login({
           uid: userAuth.uid,
@@ -44,7 +44,7 @@ function App() {
         }))
 
       } else {
-        console.log("logout")
+        console.log("else")
         //user is not logged out
         dispatch(logout())
         setTimeout(() => {
@@ -53,16 +53,13 @@ function App() {
 
       }
     })
-    return () => {
-      console.log("logoutted")
-      unsubscribe()
-    }
+    return unsubscribe
   }, [dispatch])
 
   console.log("isLoading", isLoading)
   console.log("isSubscribed", isSubscribed)
   useEffect(() => {
-    if (user && isSubscribed) {
+    if (!isLoading && user && isSubscribed) {
       history.push("/")
     } else if (!isLoading && user && !isSubscribed) {
       history.push("/profile")
@@ -70,9 +67,9 @@ function App() {
       history.push("/login")
     }
   }, [isLoading, isSubscribed, history, user])
-  // console.log("isError ", isError)
+  console.log("isError ", isError)
   return (
-    <div className="app">
+    <div className={`app ${isLoading ? "app--hidden" : ""}`}>
       {isLoading && (
         <Loader />
       )}

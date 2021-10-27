@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 import { loadStripe } from '@stripe/stripe-js'
-import { auth } from '../../firebase/firebase'
 import { db } from '../../firebase/firebase'
 
 import { useSelector } from 'react-redux'
@@ -35,10 +34,7 @@ export const SubscribePlans = ({ signOut }) => {
                     })
 
                     dispatch(updateSubscriber(subscription.data().role))
-                    // console.log("useeffect ON", subscription.data().role)
-                    setTimeout(() => {
-                        dispatch(setLoading(false))
-                    }, 2400);
+                    dispatch(setLoading(false))
                 })
             })
     }, [user.uid, dispatch])
@@ -63,18 +59,16 @@ export const SubscribePlans = ({ signOut }) => {
                     })
                 })
                 setProducts(products)
-                setTimeout(() => {
-                    dispatch(setLoading(false))
-                }, 2400);
+                dispatch(setLoading(false))
             })
     }, [])
 
     const signOutHandler = () => {
         dispatch(setLoading(true))
         setTimeout(() => {
-            auth.signOut()
+            signOut()
             dispatch(updateSubscriber(null))
-        }, 1000);
+        }, 1200);
     }
 
     const loadCheckout = async (priceId) => {
