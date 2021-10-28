@@ -66,7 +66,7 @@ function App() {
     } else if (!isLoading && !user) {
       history.push("/login")
     }
-  }, [isLoading, isSubscribed, history, user])
+  }, [isLoading, isSubscribed, history, user, dispatch])
   console.log("isError ", isError)
   return (
     <div className={`app ${isLoading ? "app--hidden" : ""}`}>

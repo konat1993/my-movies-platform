@@ -17,6 +17,7 @@
             object-fit: contain;
             margin-right: 10px;
             width: 100%;
+            cursor: pointer;
             transition: transform 0.4s linear;
 
             // &:first-child {
@@ -37,5 +38,9 @@
                 opacity: 1;
             }
         }
+    }
+
+    .youtubeIframe {
+        padding-right: 20px;
     }
 }

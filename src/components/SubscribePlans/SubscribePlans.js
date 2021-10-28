@@ -37,7 +37,7 @@ export const SubscribePlans = ({ signOut }) => {
                 })
                 dispatch(setLoading(false))
             })
-    }, [user.uid, dispatch])
+    }, [user.uid])
 
     useEffect(() => {
         db.collection("products")

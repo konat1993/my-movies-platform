@@ -9,7 +9,8 @@ const inStyles = (movie) => {
     return {
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundImage: `url(${movie.length !== 0 && (movie.posters.backdrops[0].link || movie.image)})`
+        // backgroundImage: `url(${movie.length !== 0 && (movie.posters.backdrops[0].link || movie.image)})`
+        backgroundImage: `url(http://www.elizabethtabish.com/uploads/4/5/0/4/45043953/the-chosen-walk_1_orig.jpg)`
     }
 }
 
@@ -47,6 +48,10 @@ export const Banner = () => {
             </div>
 
             <div className="banner--fadeBottom" />
+            <div className="youtubeBannerIframe__wrapper">
+                <iframe className="youtubeBannerIframe" src={`https://www.youtube.com/embed/K1-FoFj8Jbo?vq=hd1080&autoplay=1&mute=1`} title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </header>
     )
 }
