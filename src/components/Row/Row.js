@@ -17,38 +17,17 @@ export const Row = (props) => {
     const fetchData = async () => {
         const request = await axios.get(fetchUrl)
         setMovies(request.data)
-        console.log(request)
     }
 
     useEffect(() => {
         //fetchData()
     }, [])
 
-    // const handleClick = async (id) => {
-    // if (trailerLink) {
-    //     setTrailerLink("")
-    // } else {
-    //     const request = await axios.get("https://imdb-api.com/API/YouTubeTrailer/k_svdcp329/tt0411008")
-    //     // return console.log("request ", request.data.videoUrl)
-    //     return setTrailerLink(convertLink(request.data.videoUrl))
-    // }
-    // }
-
-    // useEffect(async () => {
-    //     if (trailerLink) {
-    //         setTrailerLink("")
-    //     } else {
-    //         const request = await axios.get(`https://imdb-api.com/API/YouTubeTrailer/k_h106awpe/tt6054650`)
-            // return console.log("request ", request.data.videoUrl)
-            // return setTrailerLink(convertLink(request.data.videoUrl))
-    //     }
-    // }, [])
     const handleClick = async (movie) => {
         if (trailerLink) {
             setTrailerLink("")
         } else {
             const request = await axios.get(`https://imdb-api.com/API/YouTubeTrailer/k_h106awpe/tt6054650`)
-            console.log("request ", request)
             return setTrailerLink(convertLink(request.data.videoUrl))
         }
     }
