@@ -21,7 +21,7 @@ export const Row = (props) => {
     }
 
     useEffect(() => {
-        fetchData()
+        //fetchData()
     }, [])
 
     // const handleClick = async (id) => {
