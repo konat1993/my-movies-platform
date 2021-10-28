@@ -71,32 +71,26 @@
         z-index: 999;
     }
 }
-.youtubeBannerIframe__wrapper {
-    position: absolute;
-    top: -60px;
-    width: 100%;
-    height: 550px;
-
     .youtubeBannerIframe {
-        position: relative;
+        position: absolute;
+        top: -60px;
         width: 100%;
-        height: 100%;
+        height: 550px;
         opacity: 0;
         z-index: 9999;
         animation: bannerIframeFade 0.4s 3.4s ease-in-out forwards;
     }
-}
-@keyframes bannerFade {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        z-index: 1;
-    }
-    100% {
-        opacity: 1;
-    }
-}
+// @keyframes bannerFade {
+//     0% {
+//         opacity: 1;
+//     }
+//     50% {
+//         z-index: 1;
+//     }
+//     100% {
+//         opacity: 1;
+//     }
+// }
 @keyframes bannerIframeFade {
     0% {
         opacity: 0;

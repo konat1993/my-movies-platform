@@ -50,10 +50,10 @@ export const Banner = () => {
 
                 <div className="banner--fadeBottom" />
             </header>
-            <div className="youtubeBannerIframe__wrapper">
-                <iframe className="youtubeBannerIframe" src={`https://www.youtube.com/embed/K1-FoFj8Jbo?vq=hd1080&autoplay=1&mute=1`} title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+            {/* <div className="youtubeBannerIframe__wrapper"> */}
+            <iframe className="youtubeBannerIframe" src={`https://www.youtube.com/embed/K1-FoFj8Jbo?vq=hd1080&autoplay=1&mute=1`} title="YouTube video player" frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+            {/* </div> */}
         </>
     )
 }
