@@ -20,14 +20,14 @@ export const Row = (props) => {
     }
 
     useEffect(() => {
-        //fetchData()
+        fetchData()
     }, [])
 
-    const handleClick = async (movie) => {
+    const handleClick = async (id) => {
         if (trailerLink) {
             setTrailerLink("")
         } else {
-            const request = await axios.get(`https://imdb-api.com/API/YouTubeTrailer/k_h106awpe/tt6054650`)
+            const request = await axios.get(`https://imdb-api.com/API/YouTubeTrailer/k_wpa5j156/${id}`)
             return setTrailerLink(convertLink(request.data.videoUrl))
         }
     }
@@ -45,8 +45,8 @@ export const Row = (props) => {
                 }
             </div>
 
-            {trailerLink && <iframe className="youtubeIframe" width="100%" height="400" src={trailerLink} frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
+            {trailerLink && <iframe className="youtubeIframe" width="100%" height="400" src={trailerLink} frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>}
         </div>
     )
 }

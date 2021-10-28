@@ -27,8 +27,11 @@
             font-size: 3rem;
             font-weight: 800;
             padding-bottom: 0.3rem;
+            width: fit-content;
+            max-width: 550px;
         }
         .banner__buttons {
+            width: fit-content;
             .banner__button {
                 cursor: pointer;
                 color: #fff;

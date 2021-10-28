@@ -19,14 +19,14 @@ export const Banner = () => {
     const [movie, setMovie] = useState([])
 
     const fetchData = async () => {
-        const request = await axios.get(requests.fetchSpecificMovie("tt4950110"))
+        const request = await axios.get(requests.fetchSpecificMovie("tt9471404"))
         setMovie(request.data)
 
         return request
     }
 
     useEffect(() => {
-        //fetchData()
+        fetchData()
     }, [])
 
     const truncate = (string, n) => {
