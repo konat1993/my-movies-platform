@@ -1,10 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ```diff
-See demo project:
-- Notice: Movies are fetched from free trial IMDB API which allows make request ONLY 100 times/day!
+See demo project below:
+- Notice: Movies are fetched from free trial IMDB API which allows making request ONLY 100 times/day!
 - So you may not see any movies on page.
-+ text in green
 ```
 
 ## [DEMO Project: https://my-movies-platform.web.app/](https://my-movies-platform.web.app/)
