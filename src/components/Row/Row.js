@@ -18,7 +18,7 @@ export const Row = (props) => {
     const [trailerLink, setTrailerLink] = useState("")
 
     const isSubscribed = useSelector(selectIsSubscribed)
-console.log(movies)
+
     const fetchData = async () => {
         const request = await axios.get(fetchUrl)
         setMovies(request.data)
@@ -26,7 +26,7 @@ console.log(movies)
 
     useEffect(() => {
         if (isSubscribed) {
-            fetchData()
+            //fetchData()
         }
     }, [])
 
