@@ -17,6 +17,10 @@ export const RegisterScreen = (props) => {
         dispatch(emailType(email))
         setSignIn(true)
     }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        handleButton()
+    }
 
     return (
         <div className="registerScreen">
@@ -29,9 +33,9 @@ export const RegisterScreen = (props) => {
             </h2>
             <h3>Ready to watch? Enter your email to create or restart your membership.</h3>
             <div className="registerScreen__input">
-                <form>
+                <form onSubmit={handleSubmit}>
                     <input type="email" placeholder="Email Adress" onChange={handleEmail} value={email} />
-                    <button type="button" onClick={() => handleButton()}>
+                    <button type="button">
                         GET STARTED
                     </button>
                 </form>
