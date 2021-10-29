@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 
 
 // import movieTrailer from "movie-trailer"
 
 
 import axios from '../../api/axios'
+import requests from '../../api/requests';
+import { selectIsSubscribed } from '../../features/userSlice';
 import "./Row.scss"
 
 const convertLink = (src) => src.replaceAll("watch?v=", "embed/");
@@ -14,20 +17,24 @@ export const Row = (props) => {
     const [movies, setMovies] = useState([])
     const [trailerLink, setTrailerLink] = useState("")
 
+    const isSubscribed = useSelector(selectIsSubscribed)
+console.log(movies)
     const fetchData = async () => {
         const request = await axios.get(fetchUrl)
         setMovies(request.data)
     }
 
     useEffect(() => {
-        fetchData()
+        if (isSubscribed) {
+            fetchData()
+        }
     }, [])
 
     const handleClick = async (id) => {
         if (trailerLink) {
             setTrailerLink("")
         } else {
-            const request = await axios.get(`https://imdb-api.com/API/YouTubeTrailer/k_wpa5j156/${id}`)
+            const request = await axios.get(requests.fetchYoutubeTrailer(id))
             return setTrailerLink(convertLink(request.data.videoUrl))
         }
     }
