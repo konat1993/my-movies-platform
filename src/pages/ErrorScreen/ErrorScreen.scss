@@ -7,10 +7,11 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(17, 17, 17, 0.7);
+    background-color: #111;
 
     .errorScreen__wrapper {
         // background-color: rgba(197, 197, 197, 0.8);
-        background: linear-gradient(135deg, #34bcc4e7, 60%, #2548d8e7);
+        // background: linear-gradient(135deg, #34bcc4e7, 60%, #2548d8e7);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -18,49 +19,58 @@
         border-radius: 6px;
         padding: 40px 30px;
         p {
-            font-size: 40px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 4px;
+            border: 2px solid rgb(63, 63, 63);
+            font-size: 18px;
             padding: 40px 30px;
-            max-width: 800px;
+            max-width: 400px;
+            max-height: 300px;
             text-align: center;
-            color: rgb(197, 11, 11);
-            color: rgb(218, 196, 123);
+            color: rgba(197, 11, 11, 0.823);
+            // color: whitesmoke;
+            font-weight: 600;
         }
 
         button {
             position: relative;
             padding: 20px 30px;
             margin: 50px 10px 00px;
-            font-size: 28px;
+            // color: rgb(62, 50, 167);
+            color: rgba(245, 245, 245, 0.864);
+            font-size: 20px;
             border-radius: 50px;
-            border: 5px solid #000000e7;
-            background-color: rgb(160, 110, 60);
-            background-color: transparent;
+            border: 2px solid rgb(63, 63, 63);
+            // background-color: rgb(160, 110, 60);
+            background-color: rgba(0, 0, 0, 0.4);
             cursor: pointer;
+            transition: background-color 0.2s linear;
 
             &:active {
                 // background-color: rgb(212, 151, 38);
-                border-color: rgb(226, 226, 226);
+                border-color: rgb(151, 151, 151);
+                transform: scale(0.95);
             }
 
-            &::after {
-                content: "Back to login";
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                height: 100%;
-                opacity: 0;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background: linear-gradient(135deg, #2242c2e7, 60%, #21bac2e7);
-                border-radius: 300px;
-                transition: all 0.25s linear;
-            }
+            // &::after {
+            //     content: "Back to login";
+            //     display: flex;
+            //     justify-content: center;
+            //     align-items: center;
+            //     width: 100%;
+            //     height: 100%;
+            //     opacity: 0;
+            //     position: absolute;
+            //     top: 0;
+            //     left: 0;
+            //     background: linear-gradient(135deg, #111, 60%, #1f393ae7);
+            //     border-radius: 300px;
+            //     transition: all 0.25s linear;
+            // }
 
-            &:hover::after {
-                opacity: 1;
-                box-shadow: 0px 1px 6px -1px rgb(83, 83, 83);
+            &:hover{
+                // box-shadow: 0px 1px 6px -1px rgb(83, 83, 83);
+                background-color: #111;
             }
         }
     }
