@@ -1,6 +1,7 @@
 .row {
     color: white;
     margin-left: 20px;
+    margin-right: 20px;
 
     &__posters {
         display: flex;
@@ -40,7 +41,74 @@
         }
     }
 
-    .youtubeIframe {
-        padding-right: 20px;
+    .row__iframeWrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.823);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: -1;
+
+        transform: scale(0);
+        animation: showVideoWrapper 0.3s linear forwards;
+
+        .youtubeIframe {
+            opacity: 0;
+            width: 54%;
+            animation: appearVideo 0.5s 0.5s linear forwards;
+        }
+    }
+
+    .xIcon {
+        position: absolute;
+        top: 10%;
+        right: 8%;
+        width: 100px;
+        z-index: 99999;
+        opacity: 0;
+        animation: appearIcon 1s linear 2s forwards;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+        &:active {
+            transform: scale(1);
+        }
+    }
+}
+
+@keyframes showVideoWrapper {
+    0% {
+        z-index: -1;
+        transform: scale(0);
+    }
+    1% {
+        z-index: 99999;
+        transform: scale(0);
+    }
+    100% {
+        z-index: 99999;
+        transform: scale(1);
+    }
+}
+@keyframes appearVideo {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes appearIcon {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }

@@ -8,7 +8,7 @@ import requests from '../../api/requests'
 
 import "./Banner.scss"
 
-const customMoviesList = ["tt2528814", "tt1630036", "tt2872518", "tt7522002", "tt4902904", "tt9471404", "tt9471404", "tt9471404"]
+const customMoviesList = ["tt2528814", "tt1630036", "tt2872518", "tt7522002", "tt4902904", "tt9471404", "tt9471404", "tt9471404", "tt1129423"]
 
 const convertLink = (src) => src.replaceAll("watch?v=", "embed/").concat("?autoplay=1&mute=1");
 
@@ -42,22 +42,21 @@ export const Banner = () => {
 
     useEffect(() => {
         if (isSubscribed) {
-            //fetchData()
+            fetchData()
         }
     }, [])
 
     const truncate = (string, n) => {
         return string?.length > n ? string.substr(0, n - 1) + '...' : string
     }
-
     return (
         <>
             <header className="banner" style={inStyles(movie)}>
                 <div className="banner__content">
                     <h1 className="banner__title">{movie?.details?.title || movie?.details?.fullTitle}</h1>
                     <div className="banner__buttons">
-                        <button className="banner__button">Play</button>
-                        <button className="banner__button">My List</button>
+                        <button className="banner__button">My list</button>
+                        <button className="banner__button">Related movies</button>
                     </div>
                     <h1 className="banner__description">
                         {truncate(`${movie?.details?.plot}`, 400)}

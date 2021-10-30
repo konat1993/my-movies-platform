@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 
+import xIcon from "../../assets/xIcon.png"
+
 
 // import movieTrailer from "movie-trailer"
 
@@ -26,11 +28,11 @@ export const Row = (props) => {
 
     useEffect(() => {
         if (isSubscribed) {
-            //fetchData()
+            fetchData()
         }
     }, [])
 
-    const handleClick = async (id) => {
+    const handlePlayClick = async (id) => {
         if (trailerLink) {
             setTrailerLink("")
         } else {
@@ -38,22 +40,31 @@ export const Row = (props) => {
             return setTrailerLink(convertLink(request.data.videoUrl))
         }
     }
-
+    // const handlePlayClick = () => {
+    //     console.log("appear")
+    //     if (trailerLink) {
+    //         setTrailerLink("")
+    //     } else {
+    //         setTrailerLink("https://www.youtube.com/embed/2HXYmDsGhV0?autoplay=1&mute=1")
+    //     }
+    // }
     return (
         <div className="row">
-            <h2>{title}</h2>
+            <h2 onClick={handlePlayClick}>{title}</h2>
             <div className="row__posters">
                 {
                     movies.items?.map(movie => (
                         movie.image && (
-                            <img key={movie.id} onClick={() => handleClick(movie.id)} src={movie.image} className={`row__poster ${isLargeRow && "row__posterLarge"}`} alt="movieImage" />
+                            <img key={movie.id} onClick={() => handlePlayClick(movie.id)} src={movie.image} className={`row__poster ${isLargeRow && "row__posterLarge"}`} alt="movieImage" />
                         )
                     ))
                 }
             </div>
-
-            {trailerLink && <iframe className="youtubeIframe" width="100%" height="400" src={trailerLink} frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>}
+            {trailerLink && <div className="row__iframeWrapper" onClick={handlePlayClick}>
+                <iframe className="youtubeIframe" width="100%" height="400" src={trailerLink} frameBorder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <img src={xIcon} alt="xIcon" className="xIcon" />
+            </div>}
         </div>
     )
 }

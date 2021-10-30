@@ -4,12 +4,12 @@ const IM_DB_API_KEY2 = "k_h106awpe"
 const IM_DB_API_KEY3 = "k_wpa5j156"
 
 const requests = {
-    fetchPureFlixMovies: `/Company/${IM_DB_API_KEY2}/co0193544`,
-    fetchChristianCinemaMovies: `/Company/${IM_DB_API_KEY2}/co0059221`,
-    fetchTopChristianMovies: `/IMDbList/${IM_DB_API_KEY2}/ls555894106`,
+    fetchPureFlixMovies: `/Company/${IM_DB_API_KEY}/co0193544`,
+    fetchChristianCinemaMovies: `/Company/${IM_DB_API_KEY}/co0059221`,
+    fetchTopChristianMovies: `/IMDbList/${IM_DB_API_KEY}/ls555894106`,
     fetchYoutubeTrailer: (id) =>  `/YouTubeTrailer/k_wpa5j156/${id}`,
     fetchSpecificMovie: (id = "tt6054650") => {
-        return `/Title/${IM_DB_API_KEY2}/${id}/Posters`
+        return `/Title/${IM_DB_API_KEY}/${id}/Posters`
     },
 }
 
