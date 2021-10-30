@@ -13,6 +13,7 @@ See demo project below:
 - Subscription
 - Movies overview
 <!-- - Movies Selection -->
+To use Stripe test mode you need to fill card number field by passing 4242 4242 4242 4242)
 
 ## Available Scripts
 
