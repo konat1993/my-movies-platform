@@ -8,7 +8,7 @@ import Nav from '../../components/Nav/Nav'
 import SubscribePlans from '../../components/SubscribePlans/SubscribePlans'
 
 import "./ProfileScreen.scss"
-export const ProfileScreen = () => {
+export const ProfileScreen = ({ products }) => {
     const user = useSelector(selectUser)
 
     const signOutHandler = () => {
@@ -25,7 +25,7 @@ export const ProfileScreen = () => {
                         <img src="https://pbs.twimg.com/profile_images/1240119990411550720/hBEe3tdn_400x400.png" alt="avatarLarge" />
                         <div className="profileScreen__details">
                             <h2>{user?.email}</h2>
-                            {user && <SubscribePlans signOut={signOutHandler} />}
+                            {user && <SubscribePlans signOut={signOutHandler} products={products} />}
                         </div>
                     </div>
                 </div>

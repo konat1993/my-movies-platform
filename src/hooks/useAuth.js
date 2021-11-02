@@ -15,6 +15,8 @@ export const useAuth = () => {
     const isSubscribed = useSelector(selectIsSubscribed)
     const isError = useSelector(selectIsError)
 
+    const [products, setProducts] = useState([])
+
     const dispatch = useDispatch()
 
     const history = useHistory()
@@ -69,6 +71,7 @@ export const useAuth = () => {
                 .get()
                 .then((querySnapshot) => {
                     const products = {}
+
                     querySnapshot.forEach(async (productDoc) => {
                         products[productDoc.id] = productDoc.data()
 
@@ -81,7 +84,8 @@ export const useAuth = () => {
                             }
                         })
                     })
-                    dispatch(setProducts(JSON.stringify(products)))
+                    // dispatch(setProducts(products))
+                    setProducts(products)
                     dispatch(setLoading(false))
                 })
         }
@@ -95,7 +99,8 @@ export const useAuth = () => {
         state: {
             isLoading,
             isError
-        }
+        },
+        products
     }
 }
 

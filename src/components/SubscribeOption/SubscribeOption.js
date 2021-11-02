@@ -11,8 +11,8 @@ const styles = (isCurrentPackage) => {
     }
 }
 const SubscribeOption = (props) => {
-    const { name, description, isCurrentPackage, loadCheckout } = props
-
+    const { test, name, description, isCurrentPackage, loadCheckout } = props
+    console.log(test)
     const dispatch = useDispatch()
 
     const clickHandler = () => {

@@ -3,14 +3,15 @@ import React from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import { db } from '../../firebase/firebase'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectIsSubscribed, selectProductList, setLoading, updateSubscriber } from '../../features/userSlice'
+import { selectIsSubscribed, selectProductList, selectUser, setLoading, updateSubscriber } from '../../features/userSlice'
 
 import SubscribeOption from "../SubscribeOption/SubscribeOption"
 
 import "./SubscribePlans.scss"
-export const SubscribePlans = ({ signOut }) => {
+export const SubscribePlans = ({ signOut, products }) => {
     const isSubscribed = useSelector(selectIsSubscribed)
-    const products = useSelector(selectProductList)
+    const user = useSelector(selectUser)
+    // const products = useSelector(selectProductList)
 
     const dispatch = useDispatch()
 
@@ -23,7 +24,7 @@ export const SubscribePlans = ({ signOut }) => {
     }
 
     const loadCheckout = async (priceId) => {
-        const docRef = await db.collection("customers").doc(userConfig?.user.uid).collection("checkout_sessions").add({
+        const docRef = await db.collection("customers").doc(user.uid).collection("checkout_sessions").add({
             price: priceId,
             success_url: window.location.origin,
             cancel_url: window.location.origin
@@ -46,7 +47,6 @@ export const SubscribePlans = ({ signOut }) => {
             }
         })
     }
-
     return (
         <div className="subscribePlans">
             <h3>Plans (Current plan: <span>{isSubscribed?.role ? isSubscribed?.role : "None"}</span>)</h3>
@@ -58,13 +58,15 @@ export const SubscribePlans = ({ signOut }) => {
                 </p>
             }
             {
-                products && Object.entries(JSON.parse(products)).map(([productId, productData]) => {
+                // products && Object.entries(JSON.parse(products)).map(([productId, productData]) => {
+                products.length !== 0 && Object.entries(products).map(([productId, productData]) => {
                     const isCurrentPackage = productData.name?.toLowerCase().includes(
                         isSubscribed?.role
                     )
                     return (
                         <SubscribeOption
                             key={productId}
+                            test={productData}
                             name={productData.name}
                             description={productData.description}
                             isCurrentPackage={isCurrentPackage}
