@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import xIcon from "../../assets/xIcon.png"
 
@@ -9,28 +9,31 @@ import xIcon from "../../assets/xIcon.png"
 
 import axios from '../../api/axios'
 import requests from '../../api/requests';
-import { selectIsSubscribed } from '../../features/userSlice';
+import { selectIsSubscribed, selectMoviesData, setMoviesData } from '../../features/userSlice';
 import "./Row.scss"
 
 const convertLink = (src) => src.replaceAll("watch?v=", "embed/");
 export const Row = (props) => {
     const { title, fetchUrl, isLargeRow } = props
 
-    const [movies, setMovies] = useState([])
     const [trailerLink, setTrailerLink] = useState("")
 
+    const moviesData = useSelector(selectMoviesData)
     const isSubscribed = useSelector(selectIsSubscribed)
+    const dispatch = useDispatch()
 
     const fetchData = async () => {
         const request = await axios.get(fetchUrl)
-        setMovies(request.data)
-    }
 
+        dispatch(setMoviesData({
+            [title]: request.data,
+        }))
+    }
     useEffect(() => {
-        if (isSubscribed) {
+        if (isSubscribed && !moviesData?.[title]) {
             fetchData()
         }
-    }, [])
+    }, [isSubscribed])
 
     const handlePlayClick = async (id) => {
         if (trailerLink) {
@@ -50,10 +53,10 @@ export const Row = (props) => {
     // }
     return (
         <div className="row">
-            <h2 onClick={handlePlayClick}>{title}</h2>
+            <h2>{title}</h2>
             <div className="row__posters">
                 {
-                    movies.items?.map(movie => (
+                    moviesData?.[title]?.items?.map(movie => (
                         movie.image && (
                             <img key={movie.id} onClick={() => handlePlayClick(movie.id)} src={movie.image} className={`row__poster ${isLargeRow && "row__posterLarge"}`} alt="movieImage" />
                         )

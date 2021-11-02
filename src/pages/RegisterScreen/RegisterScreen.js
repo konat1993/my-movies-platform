@@ -35,7 +35,7 @@ export const RegisterScreen = (props) => {
             <div className="registerScreen__input">
                 <form onSubmit={handleSubmit}>
                     <input type="email" placeholder="Email Adress" onChange={handleEmail} value={email} />
-                    <button type="button">
+                    <button type="button" onClick={handleSubmit}>
                         GET STARTED
                     </button>
                 </form>

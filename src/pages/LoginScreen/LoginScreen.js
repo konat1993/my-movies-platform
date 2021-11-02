@@ -1,40 +1,41 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import pureFlixLogo from "../../assets/newPureFlix.png"
+import { useHistory } from 'react-router'
+import { useSelector } from 'react-redux'
+import { selectUser } from '../../features/userSlice'
 
 import SignUpScreen from '../SignUpScreen/SignUpScreen'
 import RegisterScreen from '../RegisterScreen/RegisterScreen'
+import pureFlixLogo from "../../assets/newPureFlix.png"
 
-import { selectUser } from '../../features/userSlice'
-import { useSelector } from 'react-redux'
-import { Redirect } from 'react-router'
 import "./LoginScreen.scss"
 export const LoginScreen = () => {
     const [signIn, setSignIn] = useState(false)
-
+    const history = useHistory()
     const user = useSelector(selectUser)
 
+    useEffect(() => {
+        if (user) {
+            history.push("/")
+        }
+    }, [user])
 
     return (
         <div className="loginScreen" >
-            {user ? <Redirect to="/" /> : (
-                <>
-                    <div className="loginScreen__background">
-                        <img className="loginScreen__logo" src={pureFlixLogo} alt="pureFlixLogin" />
-                        <button className="loginScreen__button" onClick={() => setSignIn(true)}>Sign In</button>
-                        <div className="loginScreen__gradient"></div>
-                    </div>
-                    <div className="loginScreen__body">
-                        {
-                            signIn ? (
-                                <SignUpScreen />
-                            ) : (
-                                <RegisterScreen setSignIn={setSignIn} />
-                            )
-                        }
-                    </div>
-                </>
-            )}
+            <div className="loginScreen__background">
+                <img className="loginScreen__logo" src={pureFlixLogo} alt="pureFlixLogin" />
+                <button className="loginScreen__button" onClick={() => setSignIn(true)}>Sign In</button>
+                <div className="loginScreen__gradient"></div>
+            </div>
+            <div className="loginScreen__body">
+                {
+                    signIn ? (
+                        <SignUpScreen />
+                    ) : (
+                        <RegisterScreen setSignIn={setSignIn} />
+                    )
+                }
+            </div>
         </div>
     )
 }

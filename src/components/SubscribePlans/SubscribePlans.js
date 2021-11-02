@@ -1,67 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import { loadStripe } from '@stripe/stripe-js'
 import { db } from '../../firebase/firebase'
-
-import { useSelector } from 'react-redux'
-import { selectUser, setLoading, updateSubscriber } from '../../features/userSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectIsSubscribed, selectProductList, setLoading, updateSubscriber } from '../../features/userSlice'
 
 import SubscribeOption from "../SubscribeOption/SubscribeOption"
 
 import "./SubscribePlans.scss"
 export const SubscribePlans = ({ signOut }) => {
-
-    const [products, setProducts] = useState([])
-    const [subscription, setSubscription] = useState(null)
-
-    const user = useSelector(selectUser)
+    const isSubscribed = useSelector(selectIsSubscribed)
+    const products = useSelector(selectProductList)
 
     const dispatch = useDispatch()
-
-
-    useEffect(() => {
-        db.collection("customers")
-            .doc(user.uid)
-            .collection("subscriptions")
-            .get()
-            .then(querySnapshot => {
-                querySnapshot.forEach(async subscription => {
-                    setSubscription({
-                        role: subscription.data().role,
-                        current_period_end: subscription.data().current_period_end.seconds,
-                        current_period_start: subscription.data().current_period_start.seconds
-                    })
-
-                    dispatch(updateSubscriber(subscription.data().role))
-                })
-                dispatch(setLoading(false))
-            })
-    }, [user.uid])
-
-    useEffect(() => {
-        db.collection("products")
-            .where("active", "==", true)
-            .get()
-            .then((querySnapshot) => {
-                const products = {}
-
-                querySnapshot.forEach(async (productDoc) => {
-                    products[productDoc.id] = productDoc.data()
-
-                    const priceSnap = await productDoc.ref.collection("prices").get()
-
-                    priceSnap.docs.forEach((price) => {
-                        products[productDoc.id].prices = {
-                            priceId: price.id,
-                            priceData: price.data()
-                        }
-                    })
-                })
-                setProducts(products)
-                dispatch(setLoading(false))
-            })
-    }, [])
 
     const signOutHandler = () => {
         dispatch(setLoading(true))
@@ -72,7 +23,7 @@ export const SubscribePlans = ({ signOut }) => {
     }
 
     const loadCheckout = async (priceId) => {
-        const docRef = await db.collection("customers").doc(user.uid).collection("checkout_sessions").add({
+        const docRef = await db.collection("customers").doc(userConfig?.user.uid).collection("checkout_sessions").add({
             price: priceId,
             success_url: window.location.origin,
             cancel_url: window.location.origin
@@ -98,18 +49,18 @@ export const SubscribePlans = ({ signOut }) => {
 
     return (
         <div className="subscribePlans">
-            <h3>Plans (Current plan: <span>{subscription?.role ? subscription?.role : "None"}</span>)</h3>
+            <h3>Plans (Current plan: <span>{isSubscribed?.role ? isSubscribed?.role : "None"}</span>)</h3>
             {
-                subscription &&
+                isSubscribed &&
                 <p>Renewal date: {
-                    new Date(subscription?.current_period_end * 1000).toLocaleDateString()
+                    new Date(isSubscribed?.current_period_end * 1000).toLocaleDateString()
                 }
                 </p>
             }
             {
-                Object.entries(products).map(([productId, productData]) => {
+                products && Object.entries(JSON.parse(products)).map(([productId, productData]) => {
                     const isCurrentPackage = productData.name?.toLowerCase().includes(
-                        subscription?.role
+                        isSubscribed?.role
                     )
                     return (
                         <SubscribeOption
