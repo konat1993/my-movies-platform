@@ -16,11 +16,13 @@ export const HomeScreen = () => {
     const isSubscribed = useSelector(selectIsSubscribed)
     const user = useSelector(selectUser)
     const history = useHistory()
+
     useEffect(() => {
         if (user && isSubscribed === false) {
             history.push("/profile")
         }
     }, [isSubscribed])
+
     return (
         <div className="homeScreen">
             <Nav />

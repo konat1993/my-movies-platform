@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useHistory } from 'react-router'
 
-import { auth } from '../firebase/firebase';
-import { db } from '../firebase/firebase'
+import { auth } from '../services/firebase';
+import { db } from '../services/firebase'
 
 import { useDispatch } from 'react-redux';
-import { login, logout, selectIsError, selectIsLoading, selectIsSubscribed, selectProductList, setLoading, setProducts, updateSubscriber } from '../features/userSlice';
+import { login, logout, selectIsError, selectIsLoading, selectIsSubscribed, setLoading, updateSubscriber } from '../features/userSlice';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../features/userSlice';
 
@@ -84,7 +84,6 @@ export const useAuth = () => {
                             }
                         })
                     })
-                    // dispatch(setProducts(products))
                     setProducts(products)
                     dispatch(setLoading(false))
                 })

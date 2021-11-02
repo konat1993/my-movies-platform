@@ -13,6 +13,7 @@ import useAuth from './hooks/useAuth';
 import './App.css';
 function App() {
   const { state: { isLoading, isError }, products } = useAuth()
+
   return (
     <div className={`app ${isLoading ? "app--hidden" : ""}`}>
       {isLoading && (

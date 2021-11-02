@@ -8,7 +8,7 @@ import requests from '../../api/requests'
 
 import "./Banner.scss"
 
-const customMoviesList = ["tt2528814", "tt1630036", "tt2872518", "tt7522002", "tt4902904", "tt9471404", "tt9471404", "tt9471404", "tt1129423"]
+const customMoviesList = ["tt2528814", "tt1630036", "tt2872518", "tt7522002", "tt4902904", "tt9471404", "tt9471404", "tt9471404", "tt1129423", "tt9471404"]
 const convertLink = (src) => src?.replaceAll("watch?v=", "embed/").concat("?autoplay=1&mute=1");
 
 const inStyles = (movie) => {
@@ -27,25 +27,24 @@ export const Banner = () => {
     const isSubscribed = useSelector(selectIsSubscribed)
     const moviesData = useSelector(selectMoviesData)
 
-    const fetchData = async () => {
-        const getRandomMovies = customMoviesList[Math.floor(Math.random() * customMoviesList.length)]
-        const request = await axios.get(requests.fetchSpecificMovie(getRandomMovies))
-        const youtubeRequest = await axios.get(requests.fetchYoutubeTrailer(getRandomMovies))
-
-        dispatch(setMoviesData({
-            bannerMoviesData: {
-                details: request.data,
-                trailer: convertLink(youtubeRequest.data.videoUrl)
-            }
-        }))
-        return request
-    }
-
     useEffect(() => {
         if (isSubscribed && !moviesData?.bannerMoviesData) {
             fetchData()
         }
     }, [isSubscribed])
+
+    const fetchData = async () => {
+        const getRandomMovies = customMoviesList[Math.floor(Math.random() * customMoviesList.length)]
+        const request = await axios.get(requests.fetchSpecificMovie(getRandomMovies))
+        const youtubeRequest = await axios.get(requests.fetchYoutubeTrailer(getRandomMovies))
+
+        return dispatch(setMoviesData({
+            bannerMoviesData: {
+                details: request.data,
+                trailer: convertLink(youtubeRequest.data.videoUrl)
+            }
+        }))
+    }
 
     const truncate = (string, n) => {
         if (moviesData?.bannerMoviesData) {
@@ -68,10 +67,8 @@ export const Banner = () => {
 
                 <div className="banner--fadeBottom" />
             </header>
-            {/* <div className="youtubeBannerIframe__wrapper"> */}
             <iframe className="youtubeBannerIframe" src={moviesData?.bannerMoviesData?.trailer} title="YouTube video player" frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-            {/* </div> */}
         </>
     )
 }

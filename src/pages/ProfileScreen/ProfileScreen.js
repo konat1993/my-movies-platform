@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { auth } from '../../firebase/firebase'
+import { auth } from '../../services/firebase'
 import { useSelector } from 'react-redux'
 import { selectUser } from '../../features/userSlice'
 

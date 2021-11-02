@@ -22,6 +22,12 @@ export const Row = (props) => {
     const isSubscribed = useSelector(selectIsSubscribed)
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        if (isSubscribed && !moviesData?.[title]) {
+            fetchData()
+        }
+    }, [isSubscribed])
+
     const fetchData = async () => {
         const request = await axios.get(fetchUrl)
 
@@ -29,11 +35,6 @@ export const Row = (props) => {
             [title]: request.data,
         }))
     }
-    useEffect(() => {
-        if (isSubscribed && !moviesData?.[title]) {
-            fetchData()
-        }
-    }, [isSubscribed])
 
     const handlePlayClick = async (id) => {
         if (trailerLink) {
@@ -43,14 +44,7 @@ export const Row = (props) => {
             return setTrailerLink(convertLink(request.data.videoUrl))
         }
     }
-    // const handlePlayClick = () => {
-    //     console.log("appear")
-    //     if (trailerLink) {
-    //         setTrailerLink("")
-    //     } else {
-    //         setTrailerLink("https://www.youtube.com/embed/2HXYmDsGhV0?autoplay=1&mute=1")
-    //     }
-    // }
+
     return (
         <div className="row">
             <h2>{title}</h2>
@@ -58,14 +52,26 @@ export const Row = (props) => {
                 {
                     moviesData?.[title]?.items?.map(movie => (
                         movie.image && (
-                            <img key={movie.id} onClick={() => handlePlayClick(movie.id)} src={movie.image} className={`row__poster ${isLargeRow && "row__posterLarge"}`} alt="movieImage" />
+                            <img
+                                key={movie.id}
+                                onClick={() => handlePlayClick(movie.id)}
+                                src={movie.image}
+                                className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+                                alt="movieImage"
+                            />
                         )
                     ))
                 }
             </div>
             {trailerLink && <div className="row__iframeWrapper" onClick={handlePlayClick}>
-                <iframe className="youtubeIframe" width="100%" height="400" src={trailerLink} frameBorder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <iframe
+                    className="youtubeIframe"
+                    width="100%"
+                    height="400"
+                    src={trailerLink}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen></iframe>
                 <img src={xIcon} alt="xIcon" className="xIcon" />
             </div>}
         </div>

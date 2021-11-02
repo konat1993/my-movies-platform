@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword
+} from "../../services/register"
 
 import useInput from '../../hooks/useInput'
 
-import { auth } from '../../firebase/firebase'
 
 import "./SignUpScreen.scss"
 import { useDispatch, useSelector } from 'react-redux'
-import { emailType, selectEmail, setError, setLoading } from '../../features/userSlice'
+import { emailType, selectEmail } from '../../features/userSlice'
 const SignUpScreen = () => {
     const [email, setEmail] = useInput("")
     const [password, setPassword] = useInput("")
@@ -22,29 +26,11 @@ const SignUpScreen = () => {
 
     const register = (e) => {
         e.preventDefault()
-        dispatch(setLoading(true))
+        createUserWithEmailAndPassword(dispatch, email, emailRedux, password)
 
-        auth.createUserWithEmailAndPassword(email || emailRedux, password)
-            .then((authUser) => {
-            }).catch((error) => {
-                dispatch(setError({
-                    status: true,
-                    message: error.message
-                }))
-                dispatch(setLoading(false))
-            })
     }
     const signIn = () => {
-        dispatch(setLoading(true))
-        auth.signInWithEmailAndPassword(email || emailRedux, password)
-            .then((authUser) => {
-            }).catch((error) => {
-                dispatch(setLoading(false))
-                dispatch(setError({
-                    status: true,
-                    message: error.message
-                }))
-            })
+        signInWithEmailAndPassword(dispatch, email, emailRedux, password)
     }
 
     const handleSubmit = (e) => {

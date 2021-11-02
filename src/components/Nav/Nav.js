@@ -15,7 +15,6 @@ const styles = (user, isSubscribed) => {
 }
 
 export const Nav = () => {
-
     const [show, handleShow] = useState(false)
 
     const history = useHistory()
