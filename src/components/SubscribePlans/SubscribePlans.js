@@ -66,7 +66,6 @@ export const SubscribePlans = ({ signOut, products }) => {
                     return (
                         <SubscribeOption
                             key={productId}
-                            test={productData}
                             name={productData.name}
                             description={productData.description}
                             isCurrentPackage={isCurrentPackage}
