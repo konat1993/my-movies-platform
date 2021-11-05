@@ -60,7 +60,7 @@ export const Banner = () => {
                         <button className="banner__button">My list</button>
                         <button className="banner__button">Related movies</button>
                     </div>
-                    <h1 className="banner__description">
+                    <h1 className={moviesData && `banner__description`}>
                         {truncate(`${moviesData?.bannerMoviesData?.details?.plot}`, 400)}
                     </h1>
                 </div>
