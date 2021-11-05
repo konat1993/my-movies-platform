@@ -2,15 +2,14 @@ import React from 'react'
 
 import { auth } from '../../services/firebase'
 import { useSelector } from 'react-redux'
-import { selectUser } from '../../features/userSlice'
+import { selectIsSubscribed, selectProductList, selectUser } from '../../features/userSlice'
 
 import Nav from '../../components/Nav/Nav'
 import SubscribePlans from '../../components/SubscribePlans/SubscribePlans'
 
 import "./ProfileScreen.scss"
-export const ProfileScreen = ({ products }) => {
+export const ProfileScreen = () => {
     const user = useSelector(selectUser)
-
     const signOutHandler = () => {
         auth.signOut()
     }
@@ -25,7 +24,7 @@ export const ProfileScreen = ({ products }) => {
                         <img src="https://pbs.twimg.com/profile_images/1240119990411550720/hBEe3tdn_400x400.png" alt="avatarLarge" />
                         <div className="profileScreen__details">
                             <h2>{user?.email}</h2>
-                            {user && <SubscribePlans signOut={signOutHandler} products={products} />}
+                            {user && < SubscribePlans signOut={signOutHandler} />}
                         </div>
                     </div>
                 </div>

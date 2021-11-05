@@ -2,14 +2,15 @@ import React from 'react'
 
 import getSubscription from '../../services/getSubscription'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectIsSubscribed, selectUser, setLoading, updateSubscriber } from '../../features/userSlice'
+import { selectIsSubscribed, selectProductList, selectUser, setLoading, updateSubscriber } from '../../features/userSlice'
 
 import SubscribeOption from "../SubscribeOption/SubscribeOption"
 
 import "./SubscribePlans.scss"
-export const SubscribePlans = ({ signOut, products }) => {
+export const SubscribePlans = ({ signOut }) => {
     const isSubscribed = useSelector(selectIsSubscribed)
     const user = useSelector(selectUser)
+    const products = useSelector(selectProductList)
 
     const dispatch = useDispatch()
 
@@ -35,7 +36,7 @@ export const SubscribePlans = ({ signOut, products }) => {
                 </p>
             }
             {
-                products.length !== 0 && Object.entries(products).map(([productId, productData]) => {
+                products && Object.entries(products).map(([productId, productData]) => {
                     const isCurrentPackage = productData.name?.toLowerCase().includes(
                         isSubscribed?.role
                     )

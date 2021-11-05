@@ -12,7 +12,7 @@ import useAuth from './hooks/useAuth';
 
 import './App.css';
 function App() {
-  const { state: { isLoading, isError }, products } = useAuth()
+  const { state: { isLoading, isError } } = useAuth()
 
   return (
     <div className={`app ${isLoading ? "app--hidden" : ""}`}>
@@ -28,7 +28,7 @@ function App() {
           <HomeScreen />
         </Route>
         <Route exact path="/profile">
-          <ProfileScreen products={products} />
+          <ProfileScreen />
         </Route>
       </Switch>
     </div>
