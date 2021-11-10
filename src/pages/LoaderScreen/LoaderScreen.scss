@@ -49,3 +49,17 @@
         opacity: 1;
     }
 }
+
+@media screen and (max-width: 850px) {
+    .loaderScreen {
+        .loaderScreen__wrapper {
+            img {
+                width: 150px;
+            }
+
+            p {
+                font-size: 40px;
+            }
+        }
+    }
+}
