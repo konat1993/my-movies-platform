@@ -55,3 +55,49 @@
         }
     }
 }
+
+@media screen and (orientation: landscape) and (max-width: 900px) {
+    .signUpScreen {
+        height: fit-content;
+        padding-top: 15px;
+        padding-bottom: 20px;
+
+        form {
+            h1 {
+                margin-bottom: 20px;
+                text-align: left;
+                font-size: 1.3rem;
+            }
+
+            input {
+                height: 30px;
+                margin-bottom: 14px;
+                padding: 0 10px;
+            }
+
+            button {
+                padding: 8px 20px;
+                margin-top: 3px;
+                font-size: 1rem;
+            }
+
+            h4 {
+                margin-top: 20px;
+                .signUpScreen__gray {
+                    font-weight: 400;
+                    color: gray;
+                }
+
+                .signUpScreen__link {
+                    color: whitesmoke;
+                    font-weight: bold;
+
+                    &:hover {
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

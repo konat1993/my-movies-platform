@@ -71,7 +71,6 @@
 
     &__body {
         position: absolute;
-        // top: 250px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -94,8 +93,6 @@
 @media screen and (max-width: 660px) {
     .loginScreen {
         &__background {
-            .loginScreen__logo {
-            }
             .loginScreen__button {
                 font-size: 0.9rem;
             }
@@ -106,12 +103,7 @@
         }
     }
 }
-@media screen and (max-width: 500px) {
-    .loginScreen {
-        &__body {
-        }
-    }
-}
+
 @media screen and (max-width: 360px) {
     .loginScreen {
         &__background {
@@ -119,9 +111,8 @@
                 display: none;
             }
         }
-
         &__body {
-            width: 80%;
+            width: 90%;
         }
     }
 }
