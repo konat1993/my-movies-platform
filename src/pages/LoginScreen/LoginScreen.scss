@@ -4,12 +4,12 @@
     background: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-christian-movies-netflix-round-up-1614305697.jpg")
         center no-repeat;
     background-size: cover;
-
     &__background {
         .loginScreen__logo {
             position: fixed;
+            top: -14px;
             left: 0;
-            width: 150px;
+            width: 200px;
             object-fit: contain;
             padding-left: 20px;
             box-sizing: content-box;
@@ -71,15 +71,57 @@
 
     &__body {
         position: absolute;
+        // top: 250px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         color: #fff;
-        width: 80%;
+        width: 60%;
+        min-width: 300px;
         max-width: 700px;
         box-sizing: content-box;
         z-index: 1;
         border-radius: 5px;
-        // box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.645);
+    }
+}
+@media screen and (max-width: 850px) {
+    .loginScreen {
+        &__body {
+            top: calc(50% + 30px);
+        }
+    }
+}
+@media screen and (max-width: 660px) {
+    .loginScreen {
+        &__background {
+            .loginScreen__logo {
+            }
+            .loginScreen__button {
+                font-size: 0.9rem;
+            }
+        }
+        &__body {
+            width: 90%;
+            min-width: 250px;
+        }
+    }
+}
+@media screen and (max-width: 500px) {
+    .loginScreen {
+        &__body {
+        }
+    }
+}
+@media screen and (max-width: 360px) {
+    .loginScreen {
+        &__background {
+            .loginScreen__button {
+                display: none;
+            }
+        }
+
+        &__body {
+            width: 80%;
+        }
     }
 }
