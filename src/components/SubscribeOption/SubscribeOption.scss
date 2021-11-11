@@ -46,3 +46,24 @@
         }
     }
 }
+
+@media screen and (orientation: portrait) and (max-width: 500px) {
+    .SubscribeOption {
+        margin: 25px 20px 40px;
+
+        p {
+            margin-right: 20px;
+            font-size: 0.8rem;
+        }
+        button {
+            margin-left: auto;
+            padding: 10px 10px;
+            font-size: 0.8rem;
+        }
+        button[name="current"] {
+            &:hover {
+                background-color: gray !important;
+            }
+        }
+    }
+}

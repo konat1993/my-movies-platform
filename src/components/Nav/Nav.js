@@ -22,7 +22,11 @@ export const Nav = () => {
     const isSubscribed = useSelector(selectIsSubscribed)
 
     const transitionNavBar = () => {
-        if (window.scrollY > 120) {
+        const widthHomepage = window.innerWidth > 850 && window.scrollY > 80
+        const widthProfile = window.innerWidth < 850 && window.scrollY > 25
+        if (widthHomepage) {
+            handleShow(true)
+        } else if (widthProfile) {
             handleShow(true)
         } else {
             handleShow(false)
