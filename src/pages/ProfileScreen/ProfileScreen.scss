@@ -12,6 +12,11 @@
         margin: 0 auto;
         max-width: 800px;
 
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
         h1 {
             font-size: 50px;
             font-weight: 400;
@@ -45,9 +50,16 @@
         align-items: flex-start;
         margin-top: 120px;
         &__body {
+            position: static;
+            transform: initial;
             .profileScreen__info {
                 position: relative;
+
+                img {
+                    height: 60px;
+                }
                 .profileScreen__details {
+                    text-overflow: ellipsis;
                     overflow: hidden;
                     h2 {
                         text-overflow: ellipsis;
@@ -63,11 +75,12 @@
 @media screen and (orientation: landscape) and (max-width: 1440px) {
     .profileScreen {
         &__body {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding-top: 5vw;
+            position: static;
+            // top: 50%;
+            // left: 50%;
+            // transform: translate(-50%, -50%);
+            transform: initial;
+            padding-top: 100px;
         }
     }
 }
@@ -75,9 +88,9 @@
 @media screen and (orientation: landscape) and (max-width: 1024px) {
     .profileScreen {
         &__body {
-            position: static;
-            padding-top: 100px;
-            transform: initial;
+            // position: static;
+            // padding-top: 100px;
+            // transform: initial;
         }
     }
 }

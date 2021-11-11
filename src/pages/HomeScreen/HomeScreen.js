@@ -10,6 +10,7 @@ import { selectIsSubscribed, selectUser } from '../../features/userSlice'
 import Nav from '../../components/Nav/Nav'
 import Banner from '../../components/Banner/Banner'
 import Row from '../../components/Row/Row'
+import Footer from '../../components/Footer/Footer'
 
 import "./HomeScreen.scss"
 export const HomeScreen = () => {
@@ -42,6 +43,7 @@ export const HomeScreen = () => {
                 fetchUrl={requests.fetchTopChristianMovies}
                 isLargeRow={false}
             />
+            <Footer />
         </div>
     )
 }
