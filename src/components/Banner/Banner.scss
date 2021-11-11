@@ -60,11 +60,12 @@
             padding: 10px;
             font-size: 0.8rem;
             max-width: 450px;
-            height: fit-content;
             color: white;
             box-sizing: content-box;
             background-color: rgba(0, 0, 0, 0.4);
             border-radius: 3px;
+            height: fit-content;
+            max-height: calc(100% - 100px);
         }
     }
     .banner--fadeBottom {
@@ -110,5 +111,70 @@
     100% {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .banner {
+        &__content {
+            .banner__title {
+                font-size: 2.2rem;
+                width: 400px;
+            }
+            .banner__buttons {
+                .banner__button {
+                    font-size: 0.8rem;
+                }
+            }
+            .banner__description {
+                width: 25rem;
+                font-size: 0.8rem;
+                max-width: 350px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .banner {
+        &__content {
+            .banner__title {
+                font-size: 1.6rem;
+                width: 300px;
+            }
+            .banner__buttons {
+                .banner__button {
+                    font-size: 0.7rem;
+                }
+            }
+            .banner__description {
+                width: 25rem;
+                font-size: 0.6rem;
+                max-width: 300px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 550px) {
+    .banner {
+        &__content {
+            .banner__title {
+                font-size: 5vw;
+                width: 250px;
+                width: 52vw;
+            }
+            .banner__buttons {
+                display: flex;
+                flex-direction: column;
+                .banner__button {
+                    font-size: 0.8rem;
+                    margin-bottom: 10px;
+                    width: fit-content;
+                }
+            }
+            .banner__description {
+                font-size: 0.6rem;
+                max-width: 50%;
+            }
+        }
     }
 }
