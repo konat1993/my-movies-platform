@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import requests from "../../api/requests"
 
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { selectIsSubscribed, selectUser } from '../../features/userSlice'
 
@@ -16,11 +16,12 @@ import "./HomeScreen.scss"
 export const HomeScreen = () => {
     const isSubscribed = useSelector(selectIsSubscribed)
     const user = useSelector(selectUser)
-    const history = useHistory()
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (user && isSubscribed === false) {
-            history.push("/profile")
+            navigate("/profile")
         }
     }, [isSubscribed])
 

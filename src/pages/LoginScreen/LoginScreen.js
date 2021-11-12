@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { selectUser } from '../../features/userSlice'
 
@@ -11,12 +11,13 @@ import pureFlixLogo from "../../assets/newPureFlix.png"
 import "./LoginScreen.scss"
 export const LoginScreen = () => {
     const [signIn, setSignIn] = useState(false)
-    const history = useHistory()
+    // const history = useHistory()
+    const navigate = useNavigate()
     const user = useSelector(selectUser)
 
     useEffect(() => {
         if (user) {
-            history.push("/")
+            navigate("/")
         }
     }, [user])
 

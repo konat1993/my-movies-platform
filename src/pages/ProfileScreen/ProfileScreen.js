@@ -2,7 +2,7 @@ import React from 'react'
 
 import { auth } from '../../services/firebase'
 import { useSelector } from 'react-redux'
-import { selectIsSubscribed, selectProductList, selectUser } from '../../features/userSlice'
+import { selectUser } from '../../features/userSlice'
 
 import Nav from '../../components/Nav/Nav'
 import SubscribePlans from '../../components/SubscribePlans/SubscribePlans'

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import HomeScreen from './pages/HomeScreen/HomeScreen';
 import LoginScreen from "./pages/LoginScreen/LoginScreen"
@@ -20,17 +20,11 @@ function App() {
         <Loader />
       )}
       {isError.status && <ErrorScreen message={isError.message} />}
-      <Switch>
-        <Route exact path="/login">
-          <LoginScreen />
-        </Route>
-        <Route exact path="/">
-          <HomeScreen />
-        </Route>
-        <Route exact path="/profile">
-          <ProfileScreen />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/login" element={<LoginScreen />} />
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/profile" element={<ProfileScreen />} />
+      </Routes>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import { auth } from "../services/firebase";
 import { db } from "../services/firebase";
@@ -28,7 +28,8 @@ export const useAuth = () => {
 
   const dispatch = useDispatch();
 
-  const history = useHistory();
+  const navigate = useNavigate()
+  // const history = useHistory();
 
   useEffect(() => {
     //Checking if authorization is OK to log in user automatically
@@ -46,7 +47,7 @@ export const useAuth = () => {
       } else {
         //user is not logged out
         dispatch(logout());
-        history.push("/login");
+        navigate("/login");
         setTimeout(() => {
           dispatch(setLoading(false));
         }, 2000);
