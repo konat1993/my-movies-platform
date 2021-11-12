@@ -41,7 +41,6 @@
     &__right {
         display: flex;
         align-items: center;
-        overflow: hidden;
 
         a {
             margin-left: 15px;
@@ -74,13 +73,32 @@
 }
 @media screen and (max-width: 360px) {
     .footer {
+        height: 60px;
+        padding: 10px 20px;
+
+        align-items: flex-start;
+
+        &__left {
+            height: 100%;
+        }
+        &__right {
+            height: 100%;
+        }
+    }
+}
+@media screen and (max-width: 320px) {
+    .footer {
         min-height: 100px;
 
         justify-content: center;
+        align-items: center;
         flex-direction: column;
 
         &__left {
             margin-bottom: 20px;
+            svg {
+                transform: translateY(8%);
+            }
         }
     }
 }
