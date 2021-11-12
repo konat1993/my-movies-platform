@@ -9,7 +9,7 @@ import requests from '../../api/requests'
 import "./Banner.scss"
 
 const customMoviesList = ["tt2528814", "tt1630036", "tt2872518", "tt7522002", "tt4902904", "tt9471404", "tt9471404", "tt9471404", "tt1129423", "tt9471404"]
-const convertLink = (src) => src?.replaceAll("watch?v=", "embed/").concat("?autoplay=1&mute=1");
+const convertLink = (src) => src?.replaceAll("watch?v=", "embed/").concat(`?autoplay=1${window.innerWidth > 1024 ? `&mute=1` : ``}`);
 
 const inStyles = (movie) => {
     return {

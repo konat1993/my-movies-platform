@@ -14,7 +14,7 @@
         align-items: center;
 
         svg {
-            transform: translateY(10%);
+            transform: translateY(8%);
         }
         h3 {
             margin-left: 5px;
@@ -56,6 +56,15 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    .footer {
+        &__left {
+            svg {
+                transform: translateY(0%);
+            }
+        }
+    }
+}
 @media screen and (max-width: 500px) {
     .footer {
         &__middle {

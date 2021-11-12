@@ -21,10 +21,6 @@
             cursor: pointer;
             transition: transform 0.4s linear;
 
-            // &:first-child {
-            //     margin-left: 10px;
-            // }
-
             &:hover {
                 transform: scale(1.08);
                 opacity: 1;
@@ -58,16 +54,18 @@
         animation: showVideoWrapper 0.3s linear forwards;
 
         .youtubeIframe {
+            margin-top: 150px;
             opacity: 0;
-            width: 54%;
+            width: 55%;
+            height: 50vh;
             animation: appearVideo 0.5s 0.5s linear forwards;
         }
     }
 
     .xIcon {
         position: absolute;
-        top: 10%;
-        right: 8%;
+        top: 110px;
+        right: 5%;
         width: 100px;
         z-index: 99999;
         opacity: 0;
@@ -110,5 +108,39 @@
     }
     100% {
         opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .row {
+        .row__iframeWrapper {
+            .youtubeIframe {
+                transform: translateY(-40px);
+            }
+        }
+
+        .xIcon {
+            top: 110px;
+            width: 60px;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .row {
+        .row__iframeWrapper {
+            .youtubeIframe {
+                width: 60%;
+                max-width: 85%;
+            }
+        }
+    }
+}
+@media screen and (orientation: portrait) and (max-width: 768px) {
+    .row {
+        .row__iframeWrapper {
+            .youtubeIframe {
+                width: 85%;
+            }
+        }
     }
 }
