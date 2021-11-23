@@ -22,8 +22,8 @@ function App() {
       {isError.status && <ErrorScreen message={isError.message} />}
       <Routes>
         <Route path="/login" element={<LoginScreen />} />
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/profile" element={<ProfileScreen />} />
+        <Route path="*" element={<HomeScreen />} />
+        <Route path="/profile/*" element={<ProfileScreen />} />
       </Routes>
     </div>
   );
