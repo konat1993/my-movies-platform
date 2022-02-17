@@ -6,7 +6,7 @@ import { selectUser } from '../../features/userSlice'
 
 import Nav from '../../components/Nav/Nav'
 import SubscribePlans from '../../components/SubscribePlans/SubscribePlans'
-
+import netflixAvatar from '../../assets/netflixAvatar.png'
 import "./ProfileScreen.scss"
 export const ProfileScreen = () => {
     const user = useSelector(selectUser)
@@ -21,7 +21,7 @@ export const ProfileScreen = () => {
                 <div className="profileScreen__body">
                     <h1>Edit Profile</h1>
                     <div className="profileScreen__info">
-                        <img src="https://pbs.twimg.com/profile_images/1240119990411550720/hBEe3tdn_400x400.png" alt="avatarLarge" />
+                        <img src={netflixAvatar} alt="avatarLarge" />
                         <div className="profileScreen__details">
                             <h2>{user?.email}</h2>
                             {user && < SubscribePlans signOut={signOutHandler} />}

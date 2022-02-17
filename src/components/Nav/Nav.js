@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
 import pureFlixLogo from "../../assets/newPureFlix.png"
+import netflixAvatar from "../../assets/netflixAvatar.png"
 import { selectIsSubscribed, selectUser } from '../../features/userSlice'
 
 import "./Nav.scss"
@@ -51,7 +52,7 @@ export const Nav = () => {
         <div className={`nav ${show && `nav__bgColorActive`}`}>
             <div className="nav__content">
                 <img className="nav__logo" style={styles(user, isSubscribed)} onClick={logoHandleClick} src={pureFlixLogo} alt="logo" />
-                <img className="nav__avatar" onClick={() => navigate("/profile")} src="https://pbs.twimg.com/profile_images/1240119990411550720/hBEe3tdn_400x400.png" alt="avatar" />
+                <img className="nav__avatar" onClick={() => navigate("/profile")} src={netflixAvatar} alt="avatar" />
             </div>
         </div>
     )
